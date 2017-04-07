@@ -1,0 +1,38 @@
+﻿  glad.c
+  Spring.cpp
+  Shader.cpp
+  Particle.cpp
+  main.cpp
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.h(35): warning C4305: 'initializing': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.h(39): warning C4305: 'initializing': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.h(43): warning C4305: 'initializing': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(44): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(89): warning C4305: 'argument': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(101): warning C4305: 'argument': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(102): warning C4305: 'argument': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(305): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(306): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(317): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\main.cpp(319): warning C4305: '=': truncation from 'double' to 'float'
+  Generating Code...
+main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSetErrorCallback referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowHint referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwDestroyWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSetWindowShouldClose referenced in function "void __cdecl keyCallback(struct GLFWwindow *,int,int,int,int)" (?keyCallback@@YAXPEAUGLFWwindow@@HHHH@Z)
+main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetMouseButton referenced in function "void __cdecl motion(struct GLFWwindow *,double,double)" (?motion@@YAXPEAUGLFWwindow@@NN@Z)
+main.obj : error LNK2019: unresolved external symbol glfwGetCursorPos referenced in function "void __cdecl mouse(struct GLFWwindow *,int,int,int)" (?mouse@@YAXPEAUGLFWwindow@@HHH@Z)
+main.obj : error LNK2019: unresolved external symbol glfwSetKeyCallback referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSetMouseButtonCallback referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSetCursorPosCallback referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSetScrollCallback referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSwapInterval referenced in function main
+MSVCRTD.lib(exe_winmain.obj) : error LNK2019: unresolved external symbol WinMain referenced in function "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ)
+B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\middleware\glfw x32\lib-vc2015\glfw3.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\x64\Debug\a4.exe : fatal error LNK1120: 19 unresolved externals
