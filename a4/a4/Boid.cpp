@@ -26,10 +26,13 @@ void Boid::generateBuffer()
 	glBindVertexArray(0);
 }
 
-void Boid::render()
+void Boid::render(mat4 &view, mat4 &proj)
 {
 	glBindVertexArray(vertexArray);
 	glUseProgram(program);
+
+	glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE, value_ptr(view));
+	glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_FALSE, value_ptr(proj));
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 
@@ -53,7 +56,7 @@ void Boid::update()
 
 void Boid::buildTriangle()
 {
-	verts.push_back(vec3(0,0,0));
-	verts.push_back(vec3(0, 0.5, 0));
-	verts.push_back(vec3(0.5, 0.5, 0));
+	verts.push_back(position);
+	verts.push_back(position + vec3(0.5,0,-0.5));
+	verts.push_back(position + vec3(0.5,0,0.5));
 }

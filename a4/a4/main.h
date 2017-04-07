@@ -1,5 +1,6 @@
 #include "Boid.h"
 #include "Shader.h"
+#include "Camera.h"
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
 #include <glm\glm.hpp>
@@ -27,6 +28,11 @@ float rotate_x = 0.0, rotate_y = 0.0;
 float delta_t = 0.000005;
 float curr_t = 0.0;
 vector<Boid*> boids;
+
+//camera
+Camera camera;
+mat4 proj;
+mat4 view;
 
 //functions
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);

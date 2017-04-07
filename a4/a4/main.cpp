@@ -37,6 +37,9 @@ int main()
 
 	setupScene();
 
+	proj = camera.calculateProjectionMatrix();
+	view = camera.calculateViewMatrix();
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glEnable(GL_DEPTH_TEST);
@@ -44,21 +47,20 @@ int main()
 		glClearColor(0.3, 0.3, 0.3, 1.0);
 
 		//update vertex positions
-									//for (int i = 0; i < particles.size(); i++)
-									//	particles[i]->update();
-									//for (int i = 0; i < springs.size(); i++)
-									//	springs[i]->update();
+		for (int i = 0; i < boids.size(); i++)
+		{
+			boids[i]->update();
+		}
+
+		//update Camera
+		proj = camera.calculateProjectionMatrix();
+		view = camera.calculateViewMatrix();
 
 		//draw objects
 		for (int i = 0; i < boids.size(); i++)
 		{
-			boids[i]->render();
+			boids[i]->render(view,proj);
 		}
-									//for (int i = 0; i < particles.size(); i++)
-										//particles[i]->render();
-
-									//for (int i = 0; i < springs.size(); i++)
-									//	springs[i]->render();
 
 		//time step
 		curr_t += delta_t;
@@ -79,12 +81,22 @@ int main()
 
 void setupScene()
 {
-	Boid *b = new Boid(vec3(0, 0, 0), 10, vec3(0, 1, 0));
-	boids.push_back(b);
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			for (int k = 0; k < 5; k++)
+			{
+				Boid *b = new Boid(vec3(i, j, k), 10, vec3(0, 1, 0));
+				boids.push_back(b);
+			}
+		}
+	}
 }
 
 void simulate()
 {
+
 }
 
 void printOpenGLVersion()
@@ -141,7 +153,6 @@ void scroll(GLFWwindow* w, double x, double y)
 {
 	double dy;
 	dy = (x - y);
-	s += dy * 0.03f;
-	if (s < 0.03)
-		s = 0.03;
+
+	camera.incrementRadius(-dy);
 }

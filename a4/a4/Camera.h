@@ -35,8 +35,8 @@ public:
 	void incrementAzu(float);
 	void incrementAlt(float);
 	void incrementRadius(float);
-
-  void setAsp(float);
+	 
+    void setAsp(float);
  
 	vec3 focalPoint;
 	mat4 calculateProjectionMatrix();

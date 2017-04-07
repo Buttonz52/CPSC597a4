@@ -22,7 +22,7 @@ public:
 	GLuint program;
 
 	void generateBuffer();
-	void render();
+	void render(mat4 &view, mat4 &proj);
 	void update();
 	void buildTriangle();
 };
