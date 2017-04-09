@@ -36,15 +36,17 @@ int main()
 	printOpenGLVersion();
 
 	setupScene();
-
+	box b = box(50.f);;
 	proj = camera.calculateProjectionMatrix();
 	view = camera.calculateViewMatrix();
+
+
 
 	while (!glfwWindowShouldClose(window))
 	{
 		glEnable(GL_DEPTH_TEST);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glClearColor(0.3, 0.3, 0.3, 1.0);
+		glClearColor(0.0, 0.0, 0.0, 1.0);
 
 		//update vertex positions
 		for (int i = 0; i < boids.size(); i++)
@@ -61,6 +63,11 @@ int main()
 		{
 			boids[i]->render(view,proj);
 		}
+
+		b.render(view, proj);				//render box
+
+		//simulate
+		simulate();
 
 		//time step
 		curr_t += delta_t;
@@ -81,21 +88,33 @@ int main()
 
 void setupScene()
 {
-	for (int i = 0; i < 5; i++)
+	srand(time(NULL));
+	int x, y, z;
+	vec3 dir;
+
+	for (int i = 0; i < 100; i++)
 	{
-		for (int j = 0; j < 5; j++)
-		{
-			for (int k = 0; k < 5; k++)
-			{
-				Boid *b = new Boid(vec3(i, j, k), 10, vec3(0, 1, 0));
-				boids.push_back(b);
-			}
-		}
+		x = rand() % 20 - 9;	// -[9,10]
+		y = rand() % 20 - 9;	// -[9,10]
+		z = rand() % 20 - 9;	// -[9,10]
+
+		dir = normalize(vec3(x, y, z));
+
+		Boid *b = new Boid(vec3(x, y, z), 0.2, dir);
+		boids.push_back(b);
 	}
 }
 
 void simulate()
 {
+	for (int i = 0; i < boids.size(); i++)
+	{
+		boids[i]->position += boids[i]->velocity * boids[i]->direction;
+	}
+
+	//cout << "x: " << boids[0]->position.x << endl;
+	//cout << "y: " << boids[0]->position.y << endl;
+	//cout << "z: " << boids[0]->position.z << endl;
 
 }
 
@@ -147,6 +166,10 @@ void motion(GLFWwindow* w, double x, double y)
 
 	mouse_old_x = x;
 	mouse_old_y = y;
+
+	camera.setAlt(rotate_x);
+	camera.setAzu(phi);
+
 }
 
 void scroll(GLFWwindow* w, double x, double y)

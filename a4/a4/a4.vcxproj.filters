@@ -33,6 +33,9 @@
     <ClCompile Include="Boid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -47,12 +50,21 @@
     <ClInclude Include="Boid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="box.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="general.frag">
       <Filter>shaders</Filter>
     </None>
     <None Include="general.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="box.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="box.vert">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

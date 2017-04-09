@@ -1,6 +1,7 @@
 #include "Boid.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "box.h"
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
 #include <glm\glm.hpp>
@@ -8,6 +9,8 @@
 #include <glm\gtc\type_ptr.hpp>
 #include <iostream>
 #include <vector>
+#include <time.h>
+#include <stdlib.h>
 
 #define PI 3.14159265359f
 #define defaultZoom 8.f
@@ -21,8 +24,9 @@ using namespace std;
 //callback
 double mouse_old_x, mouse_old_y;
 float s = 1.0;				//scroll amount
-float phi = 0.0;			//radians
-float rotate_x = 0.0, rotate_y = 0.0;
+float phi = M_PI_4 * 1.5;			//radians
+float rotate_x = M_PI_4, rotate_y = 0.0;
+float BS = 20;				//box size
 
 //Simulation
 float delta_t = 0.000005;

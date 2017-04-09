@@ -1,10 +1,3 @@
-﻿  main.cpp
-\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
-\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.cpp(47): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.cpp(50): warning C4018: '<': signed/unsigned mismatch
-\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.cpp(60): warning C4018: '<': signed/unsigned mismatch
-\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.cpp(144): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.cpp(145): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.cpp(160): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  a4.vcxproj -> \\cs-fs01\Profiles\ug\bzpetras\Desktop\CPSC587\CPSC587a4\a4\Debug\a4.exe
-  a4.vcxproj -> \\cs-fs01\Profiles\ug\bzpetras\Desktop\CPSC587\CPSC587a4\a4\Debug\a4.pdb (Full PDB)
+﻿  box.cpp
+  a4.vcxproj -> B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\Debug\a4.exe
+  a4.vcxproj -> B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\Debug\a4.pdb (Full PDB)
