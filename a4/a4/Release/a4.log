@@ -1,27 +1,28 @@
-﻿  main.cpp
-b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
-b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  Boid.cpp
+  main.cpp
+\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
+\\cs-fs01\profiles\ug\bzpetras\desktop\cpsc587\cpsc587a4\a4\a4\main.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
 main.cpp(54): warning C4018: '<': signed/unsigned mismatch
 main.cpp(64): warning C4018: '<': signed/unsigned mismatch
-main.cpp(91): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-main.cpp(97): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+main.cpp(92): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 main.cpp(98): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 main.cpp(99): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-main.cpp(101): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+main.cpp(100): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 main.cpp(102): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 main.cpp(103): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-main.cpp(115): warning C4018: '<': signed/unsigned mismatch
-main.cpp(150): warning C4018: '<': signed/unsigned mismatch
-main.cpp(173): warning C4018: '<': signed/unsigned mismatch
-main.cpp(187): warning C4018: '<': signed/unsigned mismatch
-main.cpp(204): warning C4018: '<': signed/unsigned mismatch
-main.cpp(289): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-main.cpp(290): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-main.cpp(306): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+main.cpp(104): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+main.cpp(116): warning C4018: '<': signed/unsigned mismatch
+main.cpp(151): warning C4018: '<': signed/unsigned mismatch
+main.cpp(174): warning C4018: '<': signed/unsigned mismatch
+main.cpp(188): warning C4018: '<': signed/unsigned mismatch
+main.cpp(205): warning C4018: '<': signed/unsigned mismatch
+main.cpp(298): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+main.cpp(299): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+main.cpp(315): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating code
-  1 of 453 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  11 of 453 functions ( 2.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    14 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  a4.vcxproj -> B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\Release\a4.exe
-  a4.vcxproj -> B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\Release\a4.pdb (Full PDB)
+  a4.vcxproj -> \\cs-fs01\Profiles\ug\bzpetras\Desktop\CPSC587\CPSC587a4\a4\Release\a4.exe
+  a4.vcxproj -> \\cs-fs01\Profiles\ug\bzpetras\Desktop\CPSC587\CPSC587a4\a4\Release\a4.pdb (Full PDB)

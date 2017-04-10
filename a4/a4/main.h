@@ -3,11 +3,11 @@
 #include "Camera.h"
 #include "box.h"
 #include "Cylinder.h"
-#include <glad\glad.h>
-#include <GLFW\glfw3.h>
-#include <glm\glm.hpp>
-#include <glm\gtx\transform.hpp>
-#include <glm\gtc\type_ptr.hpp>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtx/transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 #include <vector>
 #include <time.h>
@@ -34,6 +34,7 @@ vector<Boid*> boids;
 bool ali = false;
 bool coh = false;
 bool sep = false;
+bool sim = true;
 
 //camera
 Camera camera;

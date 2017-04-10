@@ -14,7 +14,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_SAMPLES, 16);
 
-	GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "CPSC587 Assignment 3", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "CPSC587 Assignment 4", NULL, NULL);
 
 	if (!window) {
 		std::cout << "Failed to create window" << std::endl;
@@ -70,7 +70,8 @@ int main()
 		obs.render(view, proj);
 
 		//simulate
-		simulate(obs);
+		if(sim)
+			simulate(obs);
 
 		//v-sync
 		glfwSwapInterval(1);
@@ -91,8 +92,8 @@ void setupScene()
 	srand(time(NULL));
 	int x, y, z, x1, y1, z1;
 	vec3 dir;
-
-	for (int i = 0; i < 500; i++)
+	
+	for (int i = 0; i < 1000; i++)
 	{
 		x = fmod(rand(), 2 * BS) - BS;	
 		y = fmod(rand(), 2 * BS) - BS;	
@@ -104,7 +105,7 @@ void setupScene()
 
 		dir = normalize(vec3(x1, y1, z1));
 
-		Boid *b = new Boid(vec3(x, y, z), 1, dir,8);
+		Boid *b = new Boid(vec3(x, y, z), 2, dir,8);
 		boids.push_back(b);
 	}
 }
@@ -231,6 +232,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+
 	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
 	{
 		if (ali)
@@ -251,6 +253,13 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 			sep = false;
 		else
 			sep = true;
+	}
+	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
+	{
+		if (sim)
+			sim = false;
+		else
+			sim = true;
 	}
 	if (key == GLFW_KEY_R && action == GLFW_PRESS)
 	{

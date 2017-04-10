@@ -37,7 +37,7 @@ void Boid::render(mat4 &view, mat4 &proj)
 	
 	glPointSize(3.f);
 
-	glDrawArrays(GL_POINTS, 0, 1);
+	glDrawArrays(GL_TRIANGLES, 0, 3);
 
 	glBindVertexArray(0);
 }
@@ -60,6 +60,6 @@ void Boid::update()
 void Boid::buildTriangle()
 {
 	verts.push_back(position);
-	//verts.push_back(position + vec3(0.5,0,-0.5));
-	//verts.push_back(position + vec3(0.5,0,0.5));
+	verts.push_back(position + vec3(1,0,-1));
+	verts.push_back(position + vec3(1,0,1));
 }

@@ -1,4 +1,4 @@
-#include <glm\gtc\type_ptr.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/transform.hpp>
 #define M_PI 3.1415926535897932384626
 #define M_PI_4 M_PI / 4
