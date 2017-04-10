@@ -37,10 +37,11 @@ int main()
 
 	setupScene();
 	box b = box(100.f);
-	Cylinder obs = Cylinder(30,20,200, vec3(-50, 0, -50));
+
 	proj = camera.calculateProjectionMatrix();
 	view = camera.calculateViewMatrix();
 
+	Cylinder obs = Cylinder(40, 10, 200, vec3(-0, 0, -0));
 
 
 	while (!glfwWindowShouldClose(window))
@@ -69,10 +70,7 @@ int main()
 		obs.render(view, proj);
 
 		//simulate
-		simulate();
-
-		//time step
-		curr_t += delta_t;
+		simulate(obs);
 
 		//v-sync
 		glfwSwapInterval(1);
@@ -94,15 +92,15 @@ void setupScene()
 	int x, y, z, x1, y1, z1;
 	vec3 dir;
 
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 500; i++)
 	{
-		x = rand() % 200 - 99;	// [-19,20]
-		y = rand() % 200 - 99;	// [-19,20]
-		z = rand() % 200 - 99;	// [-19,20]
+		x = fmod(rand(), 2 * BS) - BS;	
+		y = fmod(rand(), 2 * BS) - BS;	
+		z = fmod(rand(), 2 * BS) - BS;	
 
-		x1 = rand() % 200 - 99;	// [-19,20]
-		y1 = rand() % 200 - 99;	// [-19,20]
-		z1 = rand() % 200 - 99;	// [-19,20]
+		x1 = fmod(rand(), 2 * BS) - BS;	
+		y1 = fmod(rand(), 2 * BS) - BS;	
+		z1 = fmod(rand(), 2 * BS) - BS;	
 
 		dir = normalize(vec3(x1, y1, z1));
 
@@ -111,7 +109,7 @@ void setupScene()
 	}
 }
 
-void simulate()
+void simulate(Cylinder obs)
 {
 	//loop through to other side of box
 	for (int i = 0; i < boids.size(); i++)			
@@ -119,42 +117,47 @@ void simulate()
 		boids[i]->position += boids[i]->velocity * boids[i]->direction;		//move foward
 
 		checkLoop(boids[i]);
-		alignment(boids[i]);
-		cohesion(boids[i]);
-		separation(boids[i]);
+		if(ali)
+			alignment(boids[i]);
+		if(coh)
+			cohesion(boids[i]);
+		if(sep)
+			separation(boids[i], obs);
 	}
 }
 
 void checkLoop(Boid *b)
 {
-	if (b->position.x < -BS*5)
-		b->position.x = BS*5;
-	if (b->position.y < -BS*5)
-		b->position.y = BS*5;
-	if (b->position.z < -BS*5)
-		b->position.z = BS*5;
+	if (b->position.x < -BS)
+		b->position.x = BS;
+	if (b->position.y < -BS)
+		b->position.y = BS;
+	if (b->position.z < -BS)
+		b->position.z = BS;
 
-	if (b->position.x > BS*5)
-		b->position.x = -BS*5;
-	if (b->position.y > BS*5)
-		b->position.y = -BS*5;
-	if (b->position.z > BS*5)
-		b->position.z = -BS*5;
+	if (b->position.x > BS)
+		b->position.x = -BS;
+	if (b->position.y > BS)
+		b->position.y = -BS;
+	if (b->position.z > BS)
+		b->position.z = -BS;
 }
 
 void alignment(Boid *b)
 {
+	float l,f;
+	Boid *b2;
 	for (int j = 0; j < boids.size(); j++)
 	{
-		Boid *b2 = boids[j];
+		b2 = boids[j];
 
-		float l = length(b2->position - b->position);
+		l = length(b2->position - b->position);
 
 		if (l == 0)
 			continue;
 		else if (l < b->radius)
 		{
-			float f = l / b->radius;				//only let a little bit of direction contribute if you are far away
+			f = l / b->radius;				//only let a little bit of direction contribute if you are far away
 			b->direction += (f*f*b2->direction);
 		}
 		else
@@ -177,13 +180,15 @@ void cohesion(Boid *b)
 	b->direction = normalize(adjustDir*0.001f + b->direction);
 }
 
-void separation(Boid *b)
+void separation(Boid *b, Cylinder obs)
 {
+	float l;
+	Boid *b2;
 	for (int j = 0; j < boids.size(); j++)
 	{
-		Boid *b2 = boids[j];
+		b2 = boids[j];
 
-		float l = length(b2->position - b->position);
+		l = length(b2->position - b->position);
 
 		if (l == 0)
 			continue;
@@ -195,6 +200,15 @@ void separation(Boid *b)
 			continue;
 
 	}
+
+	for (int j = 0; j < obs.verts.size(); j++)
+	{
+		float l = length(obs.verts[j] - b->position);
+		if (l < 3)
+			b->direction = -(obs.verts[j] - b->position);
+	}
+
+	b->direction = normalize(b->direction);
 }
 
 void printOpenGLVersion()
@@ -217,6 +231,35 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+	if (key == GLFW_KEY_1 && action == GLFW_PRESS)
+	{
+		if (ali)
+			ali = false;
+		else
+			ali = true;
+	}
+	if (key == GLFW_KEY_2 && action == GLFW_PRESS)
+	{
+		if (coh)
+			coh = false;
+		else
+			coh = true;
+	}	
+	if (key == GLFW_KEY_3 && action == GLFW_PRESS)
+	{
+		if (sep)
+			sep = false;
+		else
+			sep = true;
+	}
+	if (key == GLFW_KEY_R && action == GLFW_PRESS)
+	{
+		ali = false;
+		coh = false;
+		sep = false;
+		boids.clear();
+		setupScene();
+	}
 }
 
 void mouse(GLFWwindow* window, int button, int action, int mods)
@@ -227,6 +270,10 @@ void mouse(GLFWwindow* window, int button, int action, int mods)
 		glfwGetCursorPos(window, &x, &y);
 		mouse_old_x = x;
 		mouse_old_y = y;
+
+		cout << "X: " << x << endl;
+		cout << "Y: " << y << endl;
+
 	}
 }
 

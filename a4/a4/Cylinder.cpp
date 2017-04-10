@@ -39,24 +39,40 @@ void Cylinder::render(mat4 &view, mat4 &proj)
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, slices*2+2);
+	//glDrawArrays(GL_TRIANGLE_STRIP, 0, slices*2+2);
+	glDrawArrays(GL_LINE_STRIP, 0, slices * slices);
 
 	glBindVertexArray(0);
 }
 
 void Cylinder::buildCylinder()
 {
-	float hl = height / 2;
-	float a = 0.0f;
-	float step = 2 * M_PI / slices;
+	//float hl = height / 2;
+	//float a = 0.0f;
+	//float step = 2 * M_PI / slices;
 
-	for (int i = 0; i < slices; i++) 
+	//for (int i = 0; i < slices; i++) 
+	//{
+	//	verts.push_back(vec3(radius*cos(a), -hl, radius*sin(a))+position);
+	//	verts.push_back(vec3(radius*cos(a), hl, radius*sin(a)) + position);
+	//	a += step;
+	//}
+	//a = 0.0f;
+	//verts.push_back(vec3(radius*cos(a), -hl, radius*sin(a)) + position);
+	//verts.push_back(vec3(radius*cos(a), hl, radius*sin(a)) + position);
+
+	float a;
+	float step = 2 * M_PI / slices;
+	float vstep = height / slices;
+
+	for (int j = -height/2; j < height/2; j += vstep)
 	{
-		verts.push_back(vec3(radius*cos(a), -hl, radius*sin(a))+position);
-		verts.push_back(vec3(radius*cos(a), hl, radius*sin(a)) + position);
-		a += step;
+		a = 0.0f;
+		for (int i = 0; i < slices; i++)
+		{
+			verts.push_back(vec3(radius*cos(a), j, radius*sin(a)) + position);
+			a += step;
+		}
 	}
-	a = 0.0f;
-	verts.push_back(vec3(radius*cos(a), -hl, radius*sin(a)) + position);
-	verts.push_back(vec3(radius*cos(a), hl, radius*sin(a)) + position);
+
 }

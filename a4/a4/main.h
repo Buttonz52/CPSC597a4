@@ -26,12 +26,14 @@ double mouse_old_x, mouse_old_y;
 float s = 1.0;				//scroll amount
 float phi = M_PI_4 * 1.5;			//radians
 float rotate_x = M_PI_4, rotate_y = 0.0;
-float BS = 20;				//box size
+float BS = 100;				//box size
 
 //Simulation
-float delta_t = 0.000005;
-float curr_t = 0.0;
 vector<Boid*> boids;
+
+bool ali = false;
+bool coh = false;
+bool sep = false;
 
 //camera
 Camera camera;
@@ -47,8 +49,8 @@ void errorCallback(int error, const char* description);
 void printOpenGLVersion();
 
 void setupScene();
-void simulate();
+void simulate(Cylinder obs);
 void checkLoop(Boid *b);
 void alignment(Boid *b);
 void cohesion(Boid *b);
-void separation(Boid *b);
+void separation(Boid *b, Cylinder obs);
