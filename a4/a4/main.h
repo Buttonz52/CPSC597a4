@@ -48,3 +48,7 @@ void printOpenGLVersion();
 
 void setupScene();
 void simulate();
+void checkLoop(Boid *b);
+void alignment(Boid *b);
+void cohesion(Boid *b);
+void separation(Boid *b);

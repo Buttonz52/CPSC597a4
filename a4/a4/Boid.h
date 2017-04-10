@@ -10,11 +10,12 @@ using namespace std;
 class Boid
 {
 public:
-	Boid(vec3 p, float v, vec3 d);
+	Boid(vec3 p, float v, vec3 d, float r);
 
 	vec3 position;
 	float velocity;
 	vec3 direction;
+	float radius;
 	vector<vec3> verts;
 
 	GLuint vertexBuffer;

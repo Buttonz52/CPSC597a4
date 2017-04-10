@@ -1,11 +1,12 @@
 #include "Boid.h"
 #include "Shader.h"
 
-Boid::Boid(vec3 p, float v, vec3 d)
+Boid::Boid(vec3 p, float v, vec3 d, float r)
 {
 	position = p;
 	velocity = v;
 	direction = d;
+	radius = r;
 	program = generateProgram("general.vert", "general.frag");
 	generateBuffer();
 }

@@ -36,8 +36,8 @@ int main()
 	printOpenGLVersion();
 
 	setupScene();
-	box b = box(50.f);
-	Cylinder obs = Cylinder(20,10,100, vec3(-30, 0, -30));
+	box b = box(100.f);
+	Cylinder obs = Cylinder(30,20,200, vec3(-50, 0, -50));
 	proj = camera.calculateProjectionMatrix();
 	view = camera.calculateViewMatrix();
 
@@ -94,41 +94,106 @@ void setupScene()
 	int x, y, z, x1, y1, z1;
 	vec3 dir;
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 1000; i++)
 	{
-		x = rand() % 40 - 19;	// [-19,20]
-		y = rand() % 40 - 19;	// [-19,20]
-		z = rand() % 40 - 19;	// [-19,20]
+		x = rand() % 200 - 99;	// [-19,20]
+		y = rand() % 200 - 99;	// [-19,20]
+		z = rand() % 200 - 99;	// [-19,20]
 
-		x1 = rand() % 40 - 19;	// [-19,20]
-		y1 = rand() % 40 - 19;	// [-19,20]
-		z1 = rand() % 40 - 19;	// [-19,20]
+		x1 = rand() % 200 - 99;	// [-19,20]
+		y1 = rand() % 200 - 99;	// [-19,20]
+		z1 = rand() % 200 - 99;	// [-19,20]
 
 		dir = normalize(vec3(x1, y1, z1));
 
-		Boid *b = new Boid(vec3(x, y, z), 0.1, dir);
+		Boid *b = new Boid(vec3(x, y, z), 1, dir,8);
 		boids.push_back(b);
 	}
 }
 
 void simulate()
 {
-	for (int i = 0; i < boids.size(); i++)
+	//loop through to other side of box
+	for (int i = 0; i < boids.size(); i++)			
 	{
-		boids[i]->position += boids[i]->velocity * boids[i]->direction;
-		if (boids[i]->position.x < -BS*2.5)
-			boids[i]->position.x = BS*2.5;
-		if (boids[i]->position.y < -BS*2.5)
-			boids[i]->position.y = BS*2.5;
-		if (boids[i]->position.z < -BS*2.5)
-			boids[i]->position.z = BS*2.5;
+		boids[i]->position += boids[i]->velocity * boids[i]->direction;		//move foward
 
-		if (boids[i]->position.x > BS*2.5)
-			boids[i]->position.x = -BS*2.5;
-		if (boids[i]->position.y > BS*2.5)
-			boids[i]->position.y = -BS*2.5;
-		if (boids[i]->position.z > BS*2.5)
-			boids[i]->position.z = -BS*2.5;
+		checkLoop(boids[i]);
+		alignment(boids[i]);
+		cohesion(boids[i]);
+		separation(boids[i]);
+	}
+}
+
+void checkLoop(Boid *b)
+{
+	if (b->position.x < -BS*5)
+		b->position.x = BS*5;
+	if (b->position.y < -BS*5)
+		b->position.y = BS*5;
+	if (b->position.z < -BS*5)
+		b->position.z = BS*5;
+
+	if (b->position.x > BS*5)
+		b->position.x = -BS*5;
+	if (b->position.y > BS*5)
+		b->position.y = -BS*5;
+	if (b->position.z > BS*5)
+		b->position.z = -BS*5;
+}
+
+void alignment(Boid *b)
+{
+	for (int j = 0; j < boids.size(); j++)
+	{
+		Boid *b2 = boids[j];
+
+		float l = length(b2->position - b->position);
+
+		if (l == 0)
+			continue;
+		else if (l < b->radius)
+		{
+			float f = l / b->radius;				//only let a little bit of direction contribute if you are far away
+			b->direction += (f*f*b2->direction);
+		}
+		else
+			continue;
+
+	}
+	b->direction = normalize(b->direction);
+}
+
+void cohesion(Boid *b)
+{
+	vec3 avg = vec3(0,0,0);
+	for (int j = 0; j < boids.size(); j++)
+	{
+		avg += boids[j]->position;
+	}
+	avg /= boids.size();
+
+	vec3 adjustDir = avg - b->position;
+	b->direction = normalize(adjustDir*0.001f + b->direction);
+}
+
+void separation(Boid *b)
+{
+	for (int j = 0; j < boids.size(); j++)
+	{
+		Boid *b2 = boids[j];
+
+		float l = length(b2->position - b->position);
+
+		if (l == 0)
+			continue;
+		else if (l < 3)
+		{				
+			b->direction += (-b2->direction);
+		}
+		else
+			continue;
+
 	}
 }
 
@@ -191,5 +256,5 @@ void scroll(GLFWwindow* w, double x, double y)
 	double dy;
 	dy = (x - y);
 
-	camera.incrementRadius(-2*dy);
+	camera.incrementRadius(-10*dy);
 }

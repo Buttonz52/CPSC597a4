@@ -1,4 +1,20 @@
-﻿  Cylinder.cpp
-b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\cylinder.cpp(51): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+﻿  main.cpp
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.h(27): warning C4305: 'initializing': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.h(28): warning C4305: 'initializing': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.h(32): warning C4305: 'initializing': truncation from 'double' to 'float'
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(53): warning C4018: '<': signed/unsigned mismatch
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(63): warning C4018: '<': signed/unsigned mismatch
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(93): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(117): warning C4018: '<': signed/unsigned mismatch
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(129): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(131): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(133): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(136): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(138): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(140): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(145): warning C4018: '<': signed/unsigned mismatch
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(207): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(208): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+b:\desktop\university\fourth year\winter\cpsc587\assign4\a4\a4\main.cpp(224): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   a4.vcxproj -> B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\Debug\a4.exe
   a4.vcxproj -> B:\Desktop\University\Fourth Year\Winter\CPSC587\assign4\a4\Debug\a4.pdb (Full PDB)

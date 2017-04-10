@@ -22,7 +22,7 @@ Camera::~Camera() {}
 void Camera::setInitValues() {
 	azu = M_PI_4;
 	alt = M_PI_4 * 1.5;
-	radius = 120;
+	radius = 200;
 
 	fov = M_PI / 3;
 	_near = 1;
@@ -69,7 +69,7 @@ void Camera::setRadius(float newRad)
 void Camera::incrementRadius(float newRad)
 {
 	radius -= newRad;
-	radius = min(max(radius, 6.0f), 200.0f);
+	radius = min(max(radius, 6.0f), 500.0f);
 }
 
 mat4 Camera::calculateProjectionMatrix() 
