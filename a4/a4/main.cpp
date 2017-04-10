@@ -36,7 +36,8 @@ int main()
 	printOpenGLVersion();
 
 	setupScene();
-	box b = box(50.f);;
+	box b = box(50.f);
+	Cylinder obs = Cylinder(20,10,100, vec3(-30, 0, -30));
 	proj = camera.calculateProjectionMatrix();
 	view = camera.calculateViewMatrix();
 
@@ -65,6 +66,7 @@ int main()
 		}
 
 		b.render(view, proj);				//render box
+		obs.render(view, proj);
 
 		//simulate
 		simulate();
@@ -89,18 +91,22 @@ int main()
 void setupScene()
 {
 	srand(time(NULL));
-	int x, y, z;
+	int x, y, z, x1, y1, z1;
 	vec3 dir;
 
 	for (int i = 0; i < 100; i++)
 	{
-		x = rand() % 20 - 9;	// -[9,10]
-		y = rand() % 20 - 9;	// -[9,10]
-		z = rand() % 20 - 9;	// -[9,10]
+		x = rand() % 40 - 19;	// [-19,20]
+		y = rand() % 40 - 19;	// [-19,20]
+		z = rand() % 40 - 19;	// [-19,20]
 
-		dir = normalize(vec3(x, y, z));
+		x1 = rand() % 40 - 19;	// [-19,20]
+		y1 = rand() % 40 - 19;	// [-19,20]
+		z1 = rand() % 40 - 19;	// [-19,20]
 
-		Boid *b = new Boid(vec3(x, y, z), 0.2, dir);
+		dir = normalize(vec3(x1, y1, z1));
+
+		Boid *b = new Boid(vec3(x, y, z), 0.1, dir);
 		boids.push_back(b);
 	}
 }
@@ -110,12 +116,20 @@ void simulate()
 	for (int i = 0; i < boids.size(); i++)
 	{
 		boids[i]->position += boids[i]->velocity * boids[i]->direction;
+		if (boids[i]->position.x < -BS*2.5)
+			boids[i]->position.x = BS*2.5;
+		if (boids[i]->position.y < -BS*2.5)
+			boids[i]->position.y = BS*2.5;
+		if (boids[i]->position.z < -BS*2.5)
+			boids[i]->position.z = BS*2.5;
+
+		if (boids[i]->position.x > BS*2.5)
+			boids[i]->position.x = -BS*2.5;
+		if (boids[i]->position.y > BS*2.5)
+			boids[i]->position.y = -BS*2.5;
+		if (boids[i]->position.z > BS*2.5)
+			boids[i]->position.z = -BS*2.5;
 	}
-
-	//cout << "x: " << boids[0]->position.x << endl;
-	//cout << "y: " << boids[0]->position.y << endl;
-	//cout << "z: " << boids[0]->position.z << endl;
-
 }
 
 void printOpenGLVersion()
@@ -177,5 +191,5 @@ void scroll(GLFWwindow* w, double x, double y)
 	double dy;
 	dy = (x - y);
 
-	camera.incrementRadius(-dy);
+	camera.incrementRadius(-2*dy);
 }

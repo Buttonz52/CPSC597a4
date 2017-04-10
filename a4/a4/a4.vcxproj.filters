@@ -36,6 +36,9 @@
     <ClCompile Include="box.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cylinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -53,6 +56,9 @@
     <ClInclude Include="box.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Cylinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="general.frag">
@@ -65,6 +71,12 @@
       <Filter>shaders</Filter>
     </None>
     <None Include="box.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="cylinder.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="cylinder.vert">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>

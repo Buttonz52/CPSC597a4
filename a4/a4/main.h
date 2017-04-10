@@ -2,6 +2,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "box.h"
+#include "Cylinder.h"
 #include <glad\glad.h>
 #include <GLFW\glfw3.h>
 #include <glm\glm.hpp>
@@ -12,7 +13,6 @@
 #include <time.h>
 #include <stdlib.h>
 
-#define PI 3.14159265359f
 #define defaultZoom 8.f
 
 #define WINDOW_WIDTH 700

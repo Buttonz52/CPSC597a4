@@ -22,6 +22,7 @@
     <ClCompile Include="Boid.cpp" />
     <ClCompile Include="box.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Shader.cpp" />
@@ -30,12 +31,15 @@
     <ClInclude Include="Boid.h" />
     <ClInclude Include="box.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cylinder.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="box.frag" />
     <None Include="box.vert" />
+    <None Include="cylinder.frag" />
+    <None Include="cylinder.vert" />
     <None Include="general.frag" />
     <None Include="general.vert" />
   </ItemGroup>

@@ -22,7 +22,7 @@ Camera::~Camera() {}
 void Camera::setInitValues() {
 	azu = M_PI_4;
 	alt = M_PI_4 * 1.5;
-	radius = 60;
+	radius = 120;
 
 	fov = M_PI / 3;
 	_near = 1;
